@@ -19,18 +19,27 @@ class SingleLetterSearchbar extends React.Component {
     };
 
     handleSearchClick = () => {
-        if (this.state.inputValue.length === 1) {
-            this.props.onSearch(this.state.inputValue);
-        } else {
-            alert('Please enter a single letter.');
-        }
-        // Clear input after search
-        this.setState({
-            inputValue: ''
-        });
+    if (this.state.inputValue.length === 1) {
+      // Support both prop names: onGuess (used by HangmanGame) and onSearch (older name)
+      const handler = this.props.onGuess || this.props.onSearch;
+      if (typeof handler === 'function') {
+        handler(this.state.inputValue);
+      } else {
+        // Gracefully handle missing handler to avoid TypeError
+        console.warn('SingleLetterSearchbar: no handler provided via props.onGuess or props.onSearch');
+      }
+    } else {
+      alert('Please enter a single letter.');
+    }
+
+    // Clear input after search
+    this.setState({
+      inputValue: ''
+    });
     };
 
   render() {
+    const { disabled } = this.props;
     return (
       <div>
         <input
@@ -38,8 +47,9 @@ class SingleLetterSearchbar extends React.Component {
           value={this.state.inputValue}
           onChange={this.handleInputChange}
           maxLength={1}
+          disabled={disabled}
         />
-        <button onClick={this.handleSearchClick}>Search</button>
+        <button onClick={this.handleSearchClick} disabled={disabled}>Search</button>
       </div>
     );
   }

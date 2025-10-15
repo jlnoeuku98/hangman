@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+} 
+
+/* Hangman image sizing */
+.hangman-image {
+  width: 350px;     /* set desired size */
+  height: 450px;    /* keep square for consistency */
+  object-fit: contain; /* ensures image scales nicely */
+  margin: 10px auto;
+  display: block;
 }
 
 code {

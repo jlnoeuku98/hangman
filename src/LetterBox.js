@@ -6,19 +6,19 @@ class LetterBox extends React.Component {
 
     const defaultBoxStyle = {
       border: '1px solid black',
-      width: '50px',
+      width: '70px',
       height: '50px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: '24px',
+      fontSize: '34px',
       fontWeight: 'bold',
     };
 
     const defaultLetterStyle = {
       visibility: isVisible ? 'visible' : 'hidden',
       color: 'white', 
-      fontSize: '30px' 
+      fontSize: '34px' 
     };
 
     const combinedBoxStyle = { ...defaultBoxStyle, ...boxStyle };
