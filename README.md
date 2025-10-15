@@ -1,4 +1,3 @@
-
 ## Getting started 
 ## git Clone
 Clone the repository unto your desktop from your github
